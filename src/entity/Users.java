@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Users {
@@ -11,6 +12,9 @@ public class Users {
     private String email;
     private String password;
     private String mobileno;
+    private Timestamp created_at;
+
+
 
     public String getMobileno() {
         return mobileno;
@@ -70,4 +74,11 @@ public class Users {
         this.password = password;
     }
 
+    public Timestamp getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
+    }
 }

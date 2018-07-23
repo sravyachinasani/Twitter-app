@@ -46,7 +46,7 @@ public class Userdao {
         boolean status=false;
         try {
             Connection con=Userdao.getConnection();
-            PreparedStatement ps=con.prepareStatement("select username,password from users where username=? and password=? ");
+            PreparedStatement ps=con.prepareStatement("select username,password,id from users where username=? and password=? ");
             ps.setString(1,username);
             ps.setString(2,password);
             ResultSet rs=ps.executeQuery();
@@ -57,5 +57,48 @@ public class Userdao {
         }
         return status;
 
+    }
+    public static Users getId(String username)
+    {
+        Users users=new Users();
+        try
+        {
+            Connection con=Userdao.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from users where username=?");
+            ps.setString(1,username);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next())
+            {
+                users.setId(rs.getInt(1));
+
+            }
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } return users;
+    }
+
+    public static int getIdd(String username)
+    {
+        int id=0;
+        Users users=new Users();
+        try
+        {
+            Connection con=Userdao.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from users where username=?");
+            ps.setString(1,username);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next())
+            {
+
+               users.setId(rs.getInt(1));
+               id=(users.getId());
+
+            }
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
     }
 }

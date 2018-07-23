@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 @WebServlet("/signupservlet")
@@ -15,15 +16,17 @@ public class SignupServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+        HttpSession session = request.getSession();
         String firstname=request.getParameter("firstname");
         String lastname=request.getParameter("lastname");
         String username=request.getParameter("username");
         String email=request.getParameter("email");
         String password=request.getParameter("password");
         String mobileno=request.getParameter("mobileno");
+        session.setAttribute("username",username);
        HashFunction hashFunction=new HashFunction();
       String password1= hashFunction.generateHash(password);
+
 
         Users users=new Users();
         users.setFirstname(firstname);

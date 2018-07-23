@@ -15,17 +15,17 @@ public class Signup extends HttpServlet {
       String contact=request.getParameter("Mobileno");
       String email=request.getParameter("Email");
 
-      if(username.equals("sravya@1") && password.equals("123"))
-      {
-          response.sendRedirect("signupsuccess.jsp");
-      }
-      else
-      {
-          response.sendRedirect("signup");
-      }
-    }
+//      if(username.equals("sravya@1") && password.equals("123"))
+//      {
+//          response.sendRedirect("signupsuccess.jsp");
+//      }
+//      else
+//      {
+//          response.sendRedirect("signup");
+//      }
+   }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//    }
 }
